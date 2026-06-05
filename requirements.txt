@@ -1,0 +1,8 @@
+librosa
+django
+pandas
+numpy
+scikit-learn
+requests
+tensorflow==2.13.0
+

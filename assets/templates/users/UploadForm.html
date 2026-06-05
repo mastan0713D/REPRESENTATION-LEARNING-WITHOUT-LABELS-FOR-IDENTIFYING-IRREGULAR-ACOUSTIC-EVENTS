@@ -1,0 +1,51 @@
+{% extends 'users/userbase.html' %}
+{% load static %}
+
+{% block contents %}
+
+<section class="we-do">
+<div class="container">
+<div class="we-do-details">
+
+<div class="section-header text-center">
+<h2>Test User Input</h2>
+</div>
+
+<center>
+
+<h1>Audio Prediction</h1>
+
+{% if predicted_class %}
+<h3>Machine Category: {{ predicted_class }}</h3>
+{% endif %}
+
+{% if result %}
+<h3>Anomaly Status: {{ result }}</h3>
+{% endif %}
+
+{% if error %}
+<h3>Reconstruction Error: {{ error }}</h3>
+{% endif %}
+
+ 
+
+<br><br>
+
+<form action="{% url 'predict_audio' %}" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+
+<label>Upload an audio file:</label>
+
+<input type="file" name="audio" accept=".wav" required>
+
+<button type="submit">Upload and Predict</button>
+
+</form>
+
+</center>
+
+</div>
+</div>
+</section>
+
+{% endblock %}
